@@ -1,7 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../Pages/BlogPage/Blog";
 import Category from "../Pages/CategoryPage/Category";
+import AddAProduct from "../Pages/DashboardPage/ComponentsOfDashboardPage/AddAProduct";
+import AllBuyers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllBuyers";
+import AllSellers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllSellers";
+import MyOrders from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyOrders";
+import MyProducts from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyProducts";
+import ReportedItems from "../Pages/DashboardPage/ComponentsOfDashboardPage/ReportedItems";
 import Dashboard from "../Pages/DashboardPage/Dashboard";
 import Home from "../Pages/HomePage/Home";
 
@@ -15,10 +22,6 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
-            },
-            {
                 path: '/blog',
                 element: <Blog></Blog>
             },
@@ -26,6 +29,40 @@ const router = createBrowserRouter([
                 path: '/category',
                 element: <Category></Category>
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
+            {
+                path: '/dashboard/my-orders',
+                element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/my-products',
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/add-a-product',
+                element: <AddAProduct></AddAProduct>
+            },
+            {
+                path: '/dashboard/all-buyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/all-sellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/reported-items',
+                element: <ReportedItems></ReportedItems>
+            }
         ]
     }
 ])
