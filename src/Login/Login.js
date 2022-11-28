@@ -73,7 +73,7 @@ const Login = () => {
                         </div>
                         <input className="btn btn-outline w-full mt-5" type="submit" />
                         <label className="label">
-                            <span className="label-text">New to doctors portal? <Link className='text-primary' to='/signup'>Create New Account.</Link></span>
+                            <span className="label-text">New here? <Link className='text-primary' to='/signup'>Create New Account.</Link></span>
                         </label>
                         <div className='divider'></div>
                         <button onClick={handleGoogleLogin} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>

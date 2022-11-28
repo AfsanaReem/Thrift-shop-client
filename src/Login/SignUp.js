@@ -16,17 +16,13 @@ const SignUp = () => {
     const navigate = useNavigate();
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
-    if (token) {
-        navigate('/')
-    }
+
     //click handler for creating user and updating user via email and pass
     const handleSignUp = data => {
-        console.log(data);
         setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 toast('User Created Successfully')
                 const userInfo = {
                     displayName: data.name
@@ -63,27 +59,19 @@ const SignUp = () => {
             })
 
     }
-    //user token
-    // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.accessToken) {
-    //                 localStorage.setItem('accessToken', data.accessToken)
-    //                 navigate('/');
-    //             }
-    //         })
-    // }
+
     //click handler for google login
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 toast('Logged In Successfully');
                 navigate('/');
             })
             .catch(error => { setSignUpError(error.message) })
+    }
+    if (token) {
+        navigate('/')
     }
     return (
         <div className='hero'>
@@ -94,8 +82,8 @@ const SignUp = () => {
                     <form onSubmit={handleSubmit(handleSignUp)}>
                         <div className="form-control">
                             <select {...register("role", { required: true })} className="select select-bordered w-full">
-                                <option>Buyer</option>
                                 <option>Seller</option>
+                                <option>Buyer</option>
                             </select>
                             <label className="label">
                                 <span className="label-text">Full Name</span>
