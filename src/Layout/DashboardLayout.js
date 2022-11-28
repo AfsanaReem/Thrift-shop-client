@@ -7,7 +7,7 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="drawer drawer-end">
+            <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-start">
                     <Outlet></Outlet>
