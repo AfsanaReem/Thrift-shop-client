@@ -42,6 +42,18 @@ const SignUp = () => {
                 setSignUpError(error.message);
             })
     }
+
+    //click handler for google login
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.displayName, user.email, 'Buyer')
+                toast('Logged In Successfully');
+                navigate('/');
+            })
+            .catch(error => { setSignUpError(error.message) })
+    }
     //for saving users
     const saveUser = (name, email, role) => {
         const user = { name, email, role, verified: false }
@@ -57,19 +69,9 @@ const SignUp = () => {
                 console.log(data);
                 setCreatedUserEmail(email)
             })
-
     }
 
-    //click handler for google login
-    const handleGoogleLogin = () => {
-        googleSignIn()
-            .then((result) => {
-                const user = result.user;
-                toast('Logged In Successfully');
-                navigate('/');
-            })
-            .catch(error => { setSignUpError(error.message) })
-    }
+
     if (token) {
         navigate('/')
     }

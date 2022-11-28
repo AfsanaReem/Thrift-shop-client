@@ -41,11 +41,27 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                saveUser(user.displayName, user.email, 'Buyer')
                 toast('Logged In Successfully');
                 navigate(from, { replace: true });
             })
             .catch(error => { setLoginError(error.message) })
+    }
+    //for saving users
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role, verified: false }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setLoginUserEmail(email)
+            })
     }
     return (
         <div className='hero'>
@@ -76,6 +92,7 @@ const Login = () => {
                             <span className="label-text">New here? <Link className='text-primary' to='/signup'>Create New Account.</Link></span>
                         </label>
                         <div className='divider'></div>
+                        <p>This will be buyer account</p>
                         <button onClick={handleGoogleLogin} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                     </form>
                 </div>
