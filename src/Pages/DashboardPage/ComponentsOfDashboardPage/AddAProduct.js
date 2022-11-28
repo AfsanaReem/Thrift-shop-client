@@ -2,12 +2,27 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../../../SharedComponents/Loader/Loader';
+
 
 const AddAProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imgHostKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate();
 
+    const { data: user, isLoading } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/users')
+            const data = await res.json();
+            return data;
+        }
+    })
+
+    if (isLoading) {
+        return <Loader></Loader>
+    }
 
     const handleAddProduct = (data) => {
         const image = data.img[0];
@@ -43,6 +58,7 @@ const AddAProduct = () => {
                 }
             })
     }
+
     return (
         <div>
             <div className='hero'>
@@ -55,8 +71,8 @@ const AddAProduct = () => {
                                 <label className="label">
                                     <span className="label-text">Category</span>
                                 </label>
-                                <select {...register("condition", { required: true })} className="select select-bordered w-full">
-                                    <option value='men'>Men</option>
+                                <select {...register("category", { required: true })} className="select select-bordered w-full">
+                                    <option defaultChecked value='men'>Men</option>
                                     <option value='women'>Women</option>
                                     <option value='kids'>Kids</option>
                                 </select>
@@ -77,7 +93,7 @@ const AddAProduct = () => {
                                     <span className="label-text">Condition</span>
                                 </label>
                                 <select {...register("condition", { required: true })} className="select select-bordered w-full">
-                                    <option value='new'>New</option>
+                                    <option defaultChecked value='new'>New</option>
                                     <option value='like_new'>Like New</option>
                                     <option value='good'>Good</option>
                                     <option value='used'>Used</option>
@@ -103,13 +119,13 @@ const AddAProduct = () => {
                                         <label className="label">
                                             <span className="label-text">Seller's Name</span>
                                         </label>
-                                        <input className="input input-bordered" type='text'
+                                        <input className="input input-bordered" defaultValue={user[0]?.name} disabled type='text'
                                             {...register("sellers_name", { required: true })} />
                                         <label className="label">
                                             <span className="label-text">Verified</span>
                                         </label>
-                                        <input className="input input-bordered" type='text'
-                                            {...register("varified", { required: true })} />
+                                        <input className="input input-bordered" defaultValue={user[0]?.verified} disabled type='text'
+                                            {...register("verified", { required: true })} />
                                     </>
                                 }
                             </div>
