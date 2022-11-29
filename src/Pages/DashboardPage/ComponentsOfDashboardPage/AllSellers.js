@@ -31,7 +31,7 @@ const AllSellers = () => {
                                         seller?.verified ?
                                             <td>Yes</td>
                                             :
-                                            <td>No</td>
+                                            <td><button className='btn btn-xs btn-danger'>Verify</button></td>
                                     }
                                     <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                                 </tr>)
