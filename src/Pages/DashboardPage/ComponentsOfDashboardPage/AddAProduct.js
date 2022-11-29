@@ -41,6 +41,7 @@ const AddAProduct = () => {
                         resell_price: data.resell_price,
                         buying_price: data.buying_price,
                         location: data.location,
+                        phone_number: data.phone_number,
                         sellers_name: user[0]?.name,
                         email: user[0].email,
                         verified: user[0]?.verified,
@@ -126,6 +127,12 @@ const AddAProduct = () => {
                                 </label>
                                 <input className="input input-bordered" type='text'
                                     {...register("location", { required: "Location is required" })} />
+                                {errors.location && <p className="text-red-500" role="alert">{errors.location?.message}</p>}
+                                <label className="label">
+                                    <span className="label-text">Phone Number</span>
+                                </label>
+                                <input className="input input-bordered" type='text'
+                                    {...register("phone_number", { required: "Phone Number is required" })} />
                                 {errors.location && <p className="text-red-500" role="alert">{errors.location?.message}</p>}
                             </div>
 
