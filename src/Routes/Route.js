@@ -4,7 +4,9 @@ import Main from "../Layout/Main";
 import Login from "../Login/Login";
 import SignUp from "../Login/SignUp";
 import Blog from "../Pages/BlogPage/Blog";
-import Category from "../Pages/CategoryPage/Category";
+import Kids from "../Pages/CategoryPage/Kids";
+import Mens from "../Pages/CategoryPage/Mens";
+import Womens from "../Pages/CategoryPage/Womens";
 import AddAProduct from "../Pages/DashboardPage/ComponentsOfDashboardPage/AddAProduct";
 import AllBuyers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllBuyers";
 import AllSellers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllSellers";
@@ -12,6 +14,7 @@ import MyOrders from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyOrders"
 import MyProducts from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyProducts";
 import ReportedItems from "../Pages/DashboardPage/ComponentsOfDashboardPage/ReportedItems";
 import Dashboard from "../Pages/DashboardPage/Dashboard";
+import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
 
 const router = createBrowserRouter([
@@ -29,7 +32,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category',
-                element: <Category></Category>
+                element: <Categories></Categories>
+            },
+            {
+                path: '/mens',
+                element: <Mens></Mens>
+            },
+            {
+                path: '/womens',
+                element: <Womens></Womens>
+            },
+            {
+                path: '/kids',
+                element: <Kids></Kids>
             },
             {
                 path: '/login',

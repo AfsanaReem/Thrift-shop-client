@@ -1,19 +1,20 @@
-import React from 'react';
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import AdvertisedCards from './AdvertisedCards';
 const AdvertisedItems = () => {
+    const [adProducts, setAdProducts] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:5000/products/advertised')
+            .then(data => setAdProducts(data.data))
+    }, [])
     return (
-        <div className='my-6'>
-            <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/400/arch" alt="Album" />
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title">New album is released!</h2>
-                    <p>Click the button to listen on Spotiwhy app.</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
-                    </div>
-                </div>
-            </div>
+        <div className='text-center grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+            {
+                adProducts?.map((adProduct, i) => <AdvertisedCards
+                    key={i}
+                    adProduct={adProduct}></AdvertisedCards>
+                )
+            }
         </div>
     );
 };
