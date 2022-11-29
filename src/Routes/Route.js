@@ -17,6 +17,8 @@ import Dashboard from "../Pages/DashboardPage/Dashboard";
 import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
 import Navbar from "../SharedComponents/Navbar/Navbar";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -37,15 +39,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/mens',
-                element: <Mens></Mens>
+                element: <PrivateRoute><Mens></Mens></PrivateRoute>
             },
             {
                 path: '/womens',
-                element: <Womens></Womens>
+                element: <PrivateRoute><Womens></Womens></PrivateRoute>
             },
             {
                 path: '/kids',
-                element: <Kids></Kids>
+                element: <PrivateRoute><Kids></Kids></PrivateRoute>
             },
             {
                 path: '/login',
@@ -79,15 +81,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/all-buyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/all-sellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/reported-items',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             }
         ]
     },
