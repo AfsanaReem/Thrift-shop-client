@@ -13,7 +13,7 @@ const SellerRoute = ({ children }) => {
     if (user && isSeller) {
         return children;
     }
-    return <p className='text-5xl text-center'>You are not Seller.<br /> Please Login with an Seller Account.</p>;
+    return <p className='text-5xl text-center'>You are not Seller.<br /> Please Login with a Seller Account.</p>;
 };
 
 export default SellerRoute;

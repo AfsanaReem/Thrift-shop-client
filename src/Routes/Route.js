@@ -18,6 +18,7 @@ import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
 import Navbar from "../SharedComponents/Navbar/Navbar";
 import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/my-orders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/my-products',
