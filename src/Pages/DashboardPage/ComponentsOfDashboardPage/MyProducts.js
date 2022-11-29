@@ -56,6 +56,23 @@ const MyProducts = () => {
                 }
             })
     }
+    const handleSold = (product) => {
+        fetch(`http://localhost:5000/products/sold/${product._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Marked as sold Successfully.');
+                    refetch();
+                }
+            })
+    }
     if (isLoading) {
         return <Loader></Loader>
     }
@@ -70,6 +87,7 @@ const MyProducts = () => {
                     handleDelete={handleDelete}
                     closeModal={closeModal}
                     handleAdvertise={handleAdvertise}
+                    handleSold={handleSold}
                 ></MyProductsCard>)
             }
         </div>

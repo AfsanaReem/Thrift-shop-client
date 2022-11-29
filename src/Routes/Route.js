@@ -16,6 +16,7 @@ import ReportedItems from "../Pages/DashboardPage/ComponentsOfDashboardPage/Repo
 import Dashboard from "../Pages/DashboardPage/Dashboard";
 import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
+import Navbar from "../SharedComponents/Navbar/Navbar";
 
 const router = createBrowserRouter([
     {
@@ -89,6 +90,13 @@ const router = createBrowserRouter([
                 element: <ReportedItems></ReportedItems>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <div>
+            <Navbar></Navbar>
+            <img className="mx-auto" alt='Page not found' src="page404.jpg"></img>
+        </div>
     }
 ])
 export default router;

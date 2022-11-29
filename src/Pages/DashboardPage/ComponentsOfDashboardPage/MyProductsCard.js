@@ -1,7 +1,7 @@
 import React from 'react';
 import ConfirmationModal from '../../../SharedComponents/ConfirmationModal';
 
-const MyProductsCard = ({ product, deleteProduct, setDeleteProduct, handleDelete, closeModal, handleAdvertise }) => {
+const MyProductsCard = ({ product, deleteProduct, setDeleteProduct, handleDelete, closeModal, handleAdvertise, handleSold }) => {
     const { name, buying_price, resell_price, image, condition } = product
 
     return (
@@ -22,6 +22,12 @@ const MyProductsCard = ({ product, deleteProduct, setDeleteProduct, handleDelete
                                     <button disabled className="btn btn-primary">Advertised</button>
                                     :
                                     <button onClick={() => handleAdvertise(product)} className="btn btn-primary">Advertise</button>
+                            }
+                            {
+                                product?.sold ?
+                                    <button disabled className="btn btn-primary">Sold</button>
+                                    :
+                                    <button onClick={() => handleSold(product)} className="btn btn-primary">Mark Sold</button>
                             }
                             <label onClick={() => setDeleteProduct(product)} htmlFor="confirmation-modal" className="btn btn-primary">Delete</label>
                         </div>
