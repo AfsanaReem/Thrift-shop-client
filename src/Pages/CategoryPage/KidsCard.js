@@ -3,7 +3,7 @@ import { TiTick } from "react-icons/ti";
 import BookingModal from '../../SharedComponents/BookingModal';
 
 const KidsCard = ({ kidsProduct }) => {
-    const { image, name, resell_price, buying_price, condition, location, sellers_name, verified, date } = kidsProduct;
+    const { image, name, resell_price, buying_price, condition, location, sellers_name, verified, date, sold } = kidsProduct;
 
     return (
         <div>
@@ -25,7 +25,10 @@ const KidsCard = ({ kidsProduct }) => {
                             :
                             <p>Sellers Name: {sellers_name}</p>}
                         <div className="card-actions">
-                            <label htmlFor="confirmation-modal" className="btn btn-primary">Book</label>
+                            {sold ? <button className='btn btn-primary text-white'>Sold</button> : <label
+                                htmlFor="booking-modal"
+                                className="btn btn-primary text-white">
+                                Book Now</label>}
                         </div>
                     </div>
                 </div>

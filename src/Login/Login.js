@@ -42,7 +42,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 saveUser(user.displayName, user.email, 'Buyer')
-                toast('Logged In Successfully');
+                toast.success('Logged In Successfully');
                 navigate(from, { replace: true });
             })
             .catch(error => { setLoginError(error.message) })
@@ -59,7 +59,6 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setLoginUserEmail(email)
             })
     }

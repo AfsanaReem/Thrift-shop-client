@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><a href='/blog'>Blog</a></li>
         {user?.uid ?
             <>
-                <li><a onClick={handleLogOut} href='/'>Log Out</a></li>
+                <li><a onClick={handleLogOut} href='/login'>Log Out</a></li>
             </>
             :
             <li><a href='/login'>Login</a></li>}

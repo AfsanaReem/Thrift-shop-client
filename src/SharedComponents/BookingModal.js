@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 const BookingModal = ({ product }) => {
     const navigate = useNavigate()
-    const { _id, name, resell_price } = product;
+    const { _id, name, resell_price, image } = product;
     const { user } = useContext(AuthContext);
     const handleBooking = event => {
         event.preventDefault();
@@ -22,6 +22,7 @@ const BookingModal = ({ product }) => {
             email,
             item_name,
             price,
+            image,
             number,
             meeting_location
         }

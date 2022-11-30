@@ -23,14 +23,12 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                toast('User Created Successfully')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role)
-
                     })
                     .catch(error => {
                         console.error(error)
@@ -49,8 +47,6 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 saveUser(user.displayName, user.email, 'Buyer')
-                toast('Logged In Successfully');
-                navigate('/');
             })
             .catch(error => { setSignUpError(error.message) })
     }
@@ -68,10 +64,9 @@ const SignUp = () => {
             .then(data => {
                 console.log(data);
                 setCreatedUserEmail(email)
+                toast.success(`${name} Created Successfully`)
             })
     }
-
-
     if (token) {
         navigate('/')
     }

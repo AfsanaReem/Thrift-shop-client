@@ -13,7 +13,6 @@ import AllSellers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllSell
 import MyOrders from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyOrders";
 import MyProducts from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyProducts";
 import ReportedItems from "../Pages/DashboardPage/ComponentsOfDashboardPage/ReportedItems";
-import Dashboard from "../Pages/DashboardPage/Dashboard";
 import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
 import Navbar from "../SharedComponents/Navbar/Navbar";
