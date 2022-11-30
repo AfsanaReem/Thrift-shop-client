@@ -47,6 +47,7 @@ const AddAProduct = () => {
                         verified: user[0]?.verified,
                         sold: false,
                         reported: false,
+                        paid: false,
                         date
                     }
                     //save products info to tha database
