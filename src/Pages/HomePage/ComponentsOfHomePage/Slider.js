@@ -17,7 +17,7 @@ const Slider = () => {
                         <div className="hero-content text-center text-neutral-content">
                             <div className="max-w-lg">
                                 <h1 className="mb-5 text-5xl font-bold">Welcome to thrift shop!</h1>
-                                <p className="mb-5">Here you can bye or sell gently used clothes at discounted price!</p>
+                                <p className="mb-5">Here,you can buy or sell gently used clothes at discounted price!</p>
                             </div>
                         </div>
                         {/* <div className='decoration-dotted	 underline decoration-black text-white text-center mt-64 font-extrabold'>

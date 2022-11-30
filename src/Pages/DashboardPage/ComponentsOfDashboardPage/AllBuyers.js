@@ -11,12 +11,12 @@ const AllBuyers = () => {
         setDeletingUser(null);
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/users/buyer')
+        axios.get('https://thrift-shop-server.vercel.app/users/buyer')
             .then(data => setBuyers(data.data))
     }, [deletingUser])
 
     const handleDelete = (buyer) => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

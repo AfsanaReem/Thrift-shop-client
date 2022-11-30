@@ -11,12 +11,12 @@ const ReportedItems = () => {
         setDeletingProduct(null);
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/products/reported')
+        axios.get('https://thrift-shop-server.vercel.app/products/reported')
             .then(data => setReportedItems(data.data))
     }, [deletingProduct])
 
     const handleDelete = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

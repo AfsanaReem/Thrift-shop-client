@@ -14,7 +14,7 @@ const MyOrders = () => {
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            const res = await fetch(`https://thrift-shop-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -24,7 +24,7 @@ const MyOrders = () => {
         }
     })
     const handleDelete = (product) => {
-        fetch(`http://localhost:5000/bookings/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/bookings/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const MyOrders = () => {
         return <Loader></Loader>
     }
     return (
-        <div className='text-center grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+        <div className='text-center grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 products?.map(product => <MyOrdersCard
                     key={product._id}

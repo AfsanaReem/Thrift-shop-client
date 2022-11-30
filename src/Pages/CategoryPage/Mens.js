@@ -7,11 +7,11 @@ const Mens = () => {
     const navigate = useNavigate()
     const [mensProducts, setMensProducts] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/products/mens')
+        axios.get('https://thrift-shop-server.vercel.app/products/mens')
             .then(data => setMensProducts(data.data))
     }, [])
     const handleReport = (product) => {
-        fetch(`http://localhost:5000/products/report/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/report/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

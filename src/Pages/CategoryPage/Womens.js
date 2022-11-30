@@ -7,11 +7,11 @@ const Womens = () => {
     const navigate = useNavigate();
     const [womensProducts, setWomensProducts] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/products/womens')
+        axios.get('https://thrift-shop-server.vercel.app/products/womens')
             .then(data => setWomensProducts(data.data))
     }, [])
     const handleReport = (product) => {
-        fetch(`http://localhost:5000/products/report/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/report/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -28,7 +28,7 @@ const Womens = () => {
             })
     }
     return (
-        <div className='text-center grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+        <div className='text-center grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 womensProducts &&
                 womensProducts?.map((womensProduct, i) => <WomensCard

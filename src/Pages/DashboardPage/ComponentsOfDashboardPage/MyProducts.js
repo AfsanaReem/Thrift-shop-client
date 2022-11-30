@@ -14,7 +14,7 @@ const MyProducts = () => {
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products?email=${user?.email}`, {
+            const res = await fetch(`https://thrift-shop-server.vercel.app/products?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -24,7 +24,7 @@ const MyProducts = () => {
         }
     })
     const handleDelete = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -40,7 +40,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -57,7 +57,7 @@ const MyProducts = () => {
             })
     }
     const handleSold = (product) => {
-        fetch(`http://localhost:5000/products/sold/${product._id}`, {
+        fetch(`https://thrift-shop-server.vercel.app/products/sold/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

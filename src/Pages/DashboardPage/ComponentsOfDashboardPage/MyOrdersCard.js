@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ConfirmationModal from '../../../SharedComponents/ConfirmationModal';
 
 const MyOrdersCard = ({ product, deleteProduct, setDeleteProduct, handleDelete, closeModal }) => {
-    const { item_name: name, price: resell_price, image, number, meeting_location } = product
+    const { item_name: name, price: resell_price, image, number, meeting_location, paid } = product
     return (
         <div>
             <div className='ml-2'>
@@ -16,6 +17,13 @@ const MyOrdersCard = ({ product, deleteProduct, setDeleteProduct, handleDelete, 
                         <p>Number:{number}</p>
                         <p>Meeting Location:{meeting_location}</p>
                         <div className="card-actions">
+                            {
+                                paid ?
+                                    <button className="btn btn-primary" disabled>Paid</button>
+                                    : <Link to={`/dashboard/payment/${product._id}`}>
+                                        <button className="btn btn-primary">Pay Now</button>
+                                    </Link>
+                            }
                             <label onClick={() => setDeleteProduct(product)} htmlFor="confirmation-modal" className="btn btn-primary">Remove</label>
                         </div>
                     </div>

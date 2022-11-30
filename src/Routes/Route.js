@@ -12,9 +12,11 @@ import AllBuyers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllBuyer
 import AllSellers from "../Pages/DashboardPage/ComponentsOfDashboardPage/AllSellers";
 import MyOrders from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyOrders";
 import MyProducts from "../Pages/DashboardPage/ComponentsOfDashboardPage/MyProducts";
+import Payment from "../Pages/DashboardPage/ComponentsOfDashboardPage/Payment";
 import ReportedItems from "../Pages/DashboardPage/ComponentsOfDashboardPage/ReportedItems";
 import Categories from "../Pages/HomePage/ComponentsOfHomePage/Categories";
 import Home from "../Pages/HomePage/Home";
+import DisplayError from "../SharedComponents/DisplayError";
 import Navbar from "../SharedComponents/Navbar/Navbar";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -63,6 +66,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard/my-orders',
@@ -87,6 +91,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/reported-items',
                 element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://thrift-shop-server.vercel.app/booking/${params.id}`)
             }
         ]
     },

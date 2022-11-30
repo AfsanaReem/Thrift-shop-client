@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../SharedComponents/Loader/Loader';
+import { AuthContext } from '../../../context/AuthProvider';
 const date = new Date();
 
 
 const AddAProduct = () => {
+    const { user } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imgHostKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate();
 
-    const { data: user, isLoading } = useQuery({
+    const { data: dbUser, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users')
+            const res = await fetch(`https://thrift-shop-server.vercel.app/users/${user.email}`)
             const data = await res.json();
             return data;
         }
@@ -42,16 +44,16 @@ const AddAProduct = () => {
                         buying_price: data.buying_price,
                         location: data.location,
                         phone_number: data.phone_number,
-                        sellers_name: user[0]?.name,
-                        email: user[0].email,
-                        verified: user[0]?.verified,
+                        sellers_name: dbUser?.name,
+                        email: dbUser?.email,
+                        verified: dbUser?.verified,
                         sold: false,
                         reported: false,
                         paid: false,
                         date
                     }
                     //save products info to tha database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://thrift-shop-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

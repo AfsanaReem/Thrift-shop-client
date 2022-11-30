@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 const BookingModal = ({ product }) => {
     const navigate = useNavigate()
-    const { _id, name, resell_price, image } = product;
+    const { _id, name, resell_price, image, paid } = product;
     const { user } = useContext(AuthContext);
     const handleBooking = event => {
         event.preventDefault();
@@ -24,10 +24,11 @@ const BookingModal = ({ product }) => {
             price,
             image,
             number,
+            paid,
             meeting_location
         }
         //post booking data to mongodb
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://thrift-shop-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
