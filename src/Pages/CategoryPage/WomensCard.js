@@ -2,8 +2,8 @@ import React from 'react';
 import { TiTick } from "react-icons/ti";
 import BookingModal from '../../SharedComponents/BookingModal';
 
-const WomensCard = ({ womensProduct }) => {
-    const { image, name, resell_price, buying_price, condition, location, sellers_name, verified, date, sold } = womensProduct;
+const WomensCard = ({ womensProduct, handleReport }) => {
+    const { image, name, resell_price, buying_price, condition, location, sellers_name, verified, date, sold, reported } = womensProduct;
 
     return (
         <div>
@@ -29,6 +29,7 @@ const WomensCard = ({ womensProduct }) => {
                                 htmlFor="booking-modal"
                                 className="btn btn-primary text-white">
                                 Book Now</label>}
+                            {reported ? <button className='btn btn-primary text-white'>Reported</button> : <button onClick={() => handleReport(womensProduct)} className='btn btn-primary text-white'>Report To Admin</button>}
                         </div>
                     </div>
                 </div>
