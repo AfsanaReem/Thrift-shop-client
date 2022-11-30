@@ -15,8 +15,7 @@ const CheckoutForm = ({ booking }) => {
         fetch("https://thrift-shop-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ price })
         })
