@@ -16,6 +16,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 11. Used mongodb for database.
 12. Here Admin Seller And Buyer have different roles.
 13. Admin can delete buyers and sellers and can verify a seller. Admin can delete reported products.
+Admin email: admin@admin.com
+Password: abc@d12AA
 14. Seller can add a product, advertised that product and mark the product sold.
 15. Buyer can book a product and then pay using stripe. and can report an item.
 
